@@ -1,37 +1,85 @@
-## Welcome to GitHub Pages
+---
+home: true
+# heroImage: /img/web.png
+heroText: Evan's blog
+tagline: Web前端技术博客，积跬步以至千里，致敬每个爱学习的你。
+# actionText: 立刻进入 →
+# actionLink: /web/
+# bannerBg: auto # auto => 网格纹背景(有bodyBgImg时无背景)，默认 | none => 无 | '大图地址' | background: 自定义背景样式       提示：如发现文本颜色不适应你的背景时可以到palette.styl修改$bannerTextColor变量
 
-You can use the [editor on GitHub](https://github.com/shirongsheng/old-times/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+features: # 可选的
+  - title: 前端
+    details: JavaScript、ES6、Vue框架等前端技术
+    link: /web/ # 可选
+    imgUrl: /img/web.png # 可选
+  - title: 页面
+    details: html(5)/css(3)，前端页面相关技术
+    link: /ui/
+    imgUrl: /img/ui.png
+  - title: 技术
+    details: 技术文档、教程、技巧、总结等文章
+    link: /technology/
+    imgUrl: /img/other.png
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# 文章列表显示方式: detailed 默认，显示详细版文章列表（包括作者、分类、标签、摘要、分页等）| simple => 显示简约版文章列表（仅标题和日期）| none 不显示文章列表
+# postList: detailed
+# simplePostListLength: 10 # 简约版文章列表显示的文章数量，默认10。（仅在postList设置为simple时生效）
+---
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<!-- 小熊猫 -->
+<!-- <img src="/img/panda-waving.png" class="panda no-zoom" style="width: 130px;height: 115px;opacity: 0.8;margin-bottom: -4px;padding-bottom:0;position: fixed;bottom: 0;left: 0.5rem;z-index: 1;"> -->
 
-```markdown
-Syntax highlighted code block
+<!--
+## 关于
 
-# Header 1
-## Header 2
-### Header 3
+### 📚Blog
+这是一个兼具博客文章、知识管理、文档查找的个人网站，主要内容是Web前端技术。如果你喜欢这个博客&主题欢迎到[GitHub](https://github.com/xugaoyi/vuepress-theme-vdoing)点个Star、获取源码，或者交换[友链](/friends/) ( •̀ ω •́ )✧
 
-- Bulleted
-- List
+### 🎨Theme
+本站主题是根据[VuePress](https://vuepress.vuejs.org/zh/)的默认主题修改而成。取名`Vdoing`(维度)，旨在轻松打造一个`结构化`与`碎片化`并存的个人在线知识库&博客，让你的知识海洋像一本本书一样清晰易读。配合多维索引，让每一个知识点都可以快速定位！ 更多[详情](https://github.com/xugaoyi/vuepress-theme-vdoing)。
 
-1. Numbered
-2. List
+<a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank"><img src='https://img.shields.io/github/stars/xugaoyi/vuepress-theme-vdoing' alt='GitHub stars' class="no-zoom"></a>
+<a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank"><img src='https://img.shields.io/github/forks/xugaoyi/vuepress-theme-vdoing' alt='GitHub forks' class="no-zoom"></a>
 
-**Bold** and _Italic_ and `Code` text
+</br>
 
-[Link](url) and ![Image](src)
+
+## 特色功能
+博客部分特色功能介绍
+
+#### 一站式技术搜索
+
+   博客内容中包含部分技术教程，可以利用搜索框快速搜索到相关文档，即使博客中没有的，你还可以选择最下方的 `在XXX中搜索“xxx”` 快速到达你想要找的内容。
+
+#### 深色模式与阅读模式
+关爱程序员，保护视力，点击右下角的主题模式按钮试试吧~
+
+#### Demo演示模块
+   为了更直观的展示一些代码的效果，博客添加了demo模块插件，可查看demo、源码，以及跳转到codepen在线编辑。**示例**：
+
+::: demo [vanilla]
+```html
+<html>
+  <div id="vanilla-box"></div>
+</html>
+<script>
+  var box = document.getElementById('vanilla-box')
+  box.innerHTML = 'Hello World! Welcome to EB'
+</script>
+<style>
+#vanilla-box {
+  color: #11a8cd;
+}
+</style>
 ```
+:::
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## :email: 联系
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/shirongsheng/old-times/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- **WeChat or QQ**: <a href="tencent://message/?uin=894072666&Site=&Menu=yesUrl" class='qq'>894072666</a>
+- **Email**: <a href="mailto:894072666@qq.com">894072666@qq.com</a>
+- **GitHub**: <https://github.com/xugaoyi>
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+</br>  -->
