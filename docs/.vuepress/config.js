@@ -8,7 +8,7 @@ module.exports = {
 
   title: "Shirs's blog",
   description: '不会前端的java不是好全栈',
-  base: '/old-times', // 格式：'/<仓库名>/'， 默认'/'
+  base: '/old-times/', // 格式：'/<仓库名>/'， 默认'/'
   markdown: {
     lineNumbers: true, // 代码行号
   },
