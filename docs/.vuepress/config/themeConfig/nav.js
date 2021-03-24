@@ -9,11 +9,13 @@ module.exports = [
       {
         text: '前端文章',
         items: [
+          { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' }
         ],
       },
       {
         text: '学习笔记',
         items: [
+          { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' }
         ],
       },
     ],
@@ -29,12 +31,14 @@ module.exports = [
     text: '技术',
     link: '/technology/',
     items: [
+      { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' }
     ],
   },
   {
     text: '更多',
     link: '/more/',
     items: [
+      { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' }
     ],
   },
   { text: '关于', link: '/about/' },
@@ -42,7 +46,7 @@ module.exports = [
     text: '收藏',
     link: '/pages/beb6c0bd8a66cea6/',
     items: [
-        // 这里就是text
+      { text: '新建spring boot项目', link: '/pages/beb6c0bd8a66cea6/' }
     ],
   },
   {
