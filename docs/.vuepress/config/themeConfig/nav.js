@@ -31,7 +31,7 @@ module.exports = [
     text: '技术',
     link: '/technology/',
     items: [
-      { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' }
+      { text: 'JVM', link: '/pages/8309a5b876fc95e4/' }
     ],
   },
   {
