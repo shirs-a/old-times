@@ -24,14 +24,16 @@ module.exports = [
     text: '后端',
     link: '/service/',
     items: [
-      { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' }
+      { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' },
+      { text: '集合', link: '/pages/8309a5b876fc95e5/' },
+      { text: 'JVM', link: '/pages/8309a5b876fc95e4/' }
     ],
   },
   {
     text: '技术',
     link: '/technology/',
     items: [
-      { text: 'JVM', link: '/pages/8309a5b876fc95e4/' }
+
     ],
   },
   {
