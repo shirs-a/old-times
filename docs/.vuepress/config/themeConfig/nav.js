@@ -28,7 +28,7 @@ module.exports = [
       { text: '集合', link: '/pages/8309a5b876fc95e5/' },
       { text: 'JVM', link: '/pages/8309a5b876fc95e4/' },
       { text: '设计模式', link: '/pages/8309a5b876fc9001/' },
-      { text: '@PostConstruct', link: '/pages/8309a5b876fc9002/' }
+      { text: '注解', link: '/pages/8309a5b876fc9002/' }
     ],
   },
   {
