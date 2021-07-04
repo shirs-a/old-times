@@ -10,7 +10,7 @@ tagline: 不会前端的java不是好全栈
 features: # 可选的
   - title: 技术
     details: 技术文章
-    link: /web/ # 可选
+    link: /technology/ # 可选
     imgUrl: /img/web.png # 可选
   - title: 杂谈
     details: 杂谈
