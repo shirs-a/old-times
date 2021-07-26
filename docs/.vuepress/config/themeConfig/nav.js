@@ -5,11 +5,12 @@ module.exports = [
     text: '技术',
     link: '/technology/',
     items: [
-      { text: '新建spring boot项目', link: '/pages/8309a5b876fc95e3/' },
-      { text: '集合', link: '/pages/8309a5b876fc95e5/' },
+      { text: 'spring boot', link: '/pages/8309a5b876fc95e3/' },
+      { text: 'java基础', link: '/pages/8309a5b876fc95e5/' },
       { text: 'JVM', link: '/pages/8309a5b876fc95e4/' },
       { text: '设计模式', link: '/pages/8309a5b876fc9005/' },
-      { text: '注解', link: '/pages/8309a5b876fc9002/' }
+      { text: '注解', link: '/pages/8309a5b876fc9002/' },
+      { text: '数据库', link: '/pages/8309a5b876fc9010/' }
     ],
   },
   {
