@@ -17,7 +17,6 @@ module.exports = [
     text: '杂谈',
     link: '/Miscellany/',
     items: [
-      { text: '暂无', link: '/pages/8309a5b876fc9545/' }
     ],
   },
   { text: '关于', link: '/about/' },
