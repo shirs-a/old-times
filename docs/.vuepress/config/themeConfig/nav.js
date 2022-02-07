@@ -10,6 +10,11 @@ module.exports = [
       { text: 'JVM', link: '/pages/8309a5b876fc95e4/' },
       { text: '设计模式', link: '/pages/8309a5b876fc9005/' },
       { text: '注解', link: '/pages/8309a5b876fc9002/' },
+      { text: 'linux', link: '/pages/8309a5b876fc9016/' },
+      { text: 'k8s', link: '/pages/8309a5b876fc9015/' },
+      { text: 'jeakins', link: '/pages/8309a5b876fc9017/' },
+      { text: 'debug', link: '/pages/8309a5b876fc9018/' },
+      { text: 'docker', link: '/pages/8309a5b876fc9019/' },
       { text: '数据库', link: '/pages/8309a5b876fc9010/' }
     ],
   },
@@ -17,6 +22,12 @@ module.exports = [
     text: '杂谈',
     link: '/Miscellany/',
     items: [
+    ],
+  },
+  { text: 'go',
+    link: '/go/',
+    items: [
+      { text: 'go', link: '/pages/8309a5b876fc9020/' }
     ],
   },
   { text: '关于', link: '/about/' },
