@@ -24,6 +24,12 @@ module.exports = [
     items: [
     ],
   },
+  { text: '云原生',
+    link: '/cloudnative/',
+    items: [
+      { text: 'prometheus', link: '/pages/8309a5b876fc9025/' }
+    ],
+  },
   { text: 'go',
     link: '/go/',
     items: [
