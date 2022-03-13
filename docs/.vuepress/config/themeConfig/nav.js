@@ -11,10 +11,7 @@ module.exports = [
       { text: '设计模式', link: '/pages/8309a5b876fc9005/' },
       { text: '注解', link: '/pages/8309a5b876fc9002/' },
       { text: 'linux', link: '/pages/8309a5b876fc9016/' },
-      { text: 'k8s', link: '/pages/8309a5b876fc9015/' },
-      { text: 'jeakins', link: '/pages/8309a5b876fc9017/' },
       { text: 'debug', link: '/pages/8309a5b876fc9018/' },
-      { text: 'docker', link: '/pages/8309a5b876fc9019/' },
       { text: '数据库', link: '/pages/8309a5b876fc9010/' }
     ],
   },
@@ -27,7 +24,11 @@ module.exports = [
   { text: '云原生',
     link: '/cloudnative/',
     items: [
-      { text: 'prometheus', link: '/pages/8309a5b876fc9025/' }
+      { text: 'docker', link: '/pages/8309a5b876fc9019/' },
+      { text: 'prometheus', link: '/pages/8309a5b876fc9025/' },
+      { text: 'operator', link: '/pages/8309a5b876fc9026/' },
+      { text: 'jeakins', link: '/pages/8309a5b876fc9027/' },
+      { text: 'k8s', link: '/pages/8309a5b876fc9015/' }
     ],
   },
   { text: 'go',
