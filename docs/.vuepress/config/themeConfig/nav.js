@@ -19,6 +19,7 @@ module.exports = [
     text: '杂谈',
     link: '/Miscellany/',
     items: [
+      { text: '自言自语', link: '/pages/8309a5b876fc9028/' }
     ],
   },
   { text: '云原生',

@@ -14,7 +14,7 @@ features: # 可选的
     imgUrl: /img/web.png # 可选
   - title: 杂谈
     details: 杂谈
-    link: /ui/
+    link: /miscellany/
     imgUrl: /img/ui.png
   - title: 关于
     details: 关于我
