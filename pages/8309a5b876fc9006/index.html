@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>代理模式 | Shirs&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/old-times/img/favicon.ico">
+    <script data-ad-client="ca-pub-7828333725993554" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="不会前端的java不是好全栈">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/old-times/assets/css/0.styles.c5586acc.css" as="style"><link rel="preload" href="/old-times/assets/js/app.285e83f8.js" as="script"><link rel="preload" href="/old-times/assets/js/2.448ed11b.js" as="script"><link rel="preload" href="/old-times/assets/js/21.53ed739e.js" as="script"><link rel="prefetch" href="/old-times/assets/js/10.ab33aa3c.js"><link rel="prefetch" href="/old-times/assets/js/11.0c2fdda6.js"><link rel="prefetch" href="/old-times/assets/js/12.506521d6.js"><link rel="prefetch" href="/old-times/assets/js/13.3d82def7.js"><link rel="prefetch" href="/old-times/assets/js/14.6dbaaa42.js"><link rel="prefetch" href="/old-times/assets/js/15.24b53a57.js"><link rel="prefetch" href="/old-times/assets/js/16.568531ff.js"><link rel="prefetch" href="/old-times/assets/js/17.399efd18.js"><link rel="prefetch" href="/old-times/assets/js/18.19e554c0.js"><link rel="prefetch" href="/old-times/assets/js/19.0444e602.js"><link rel="prefetch" href="/old-times/assets/js/20.584034cb.js"><link rel="prefetch" href="/old-times/assets/js/22.bd821f91.js"><link rel="prefetch" href="/old-times/assets/js/23.e100b6a0.js"><link rel="prefetch" href="/old-times/assets/js/24.e2d13426.js"><link rel="prefetch" href="/old-times/assets/js/25.4b96e77b.js"><link rel="prefetch" href="/old-times/assets/js/26.d20d960a.js"><link rel="prefetch" href="/old-times/assets/js/27.775a9c73.js"><link rel="prefetch" href="/old-times/assets/js/28.94d5bf11.js"><link rel="prefetch" href="/old-times/assets/js/29.243de78e.js"><link rel="prefetch" href="/old-times/assets/js/3.23ad075e.js"><link rel="prefetch" href="/old-times/assets/js/30.dc7f8c54.js"><link rel="prefetch" href="/old-times/assets/js/31.09d81d7c.js"><link rel="prefetch" href="/old-times/assets/js/32.06346162.js"><link rel="prefetch" href="/old-times/assets/js/33.e22edaf4.js"><link rel="prefetch" href="/old-times/assets/js/34.b0239bad.js"><link rel="prefetch" href="/old-times/assets/js/35.4608b741.js"><link rel="prefetch" href="/old-times/assets/js/36.6e8e2bb9.js"><link rel="prefetch" href="/old-times/assets/js/37.47c8d4ba.js"><link rel="prefetch" href="/old-times/assets/js/38.3f91f852.js"><link rel="prefetch" href="/old-times/assets/js/39.e5724af8.js"><link rel="prefetch" href="/old-times/assets/js/4.13662291.js"><link rel="prefetch" href="/old-times/assets/js/40.83708bb9.js"><link rel="prefetch" href="/old-times/assets/js/41.390580b8.js"><link rel="prefetch" href="/old-times/assets/js/42.17de8c7e.js"><link rel="prefetch" href="/old-times/assets/js/43.9f7cc40a.js"><link rel="prefetch" href="/old-times/assets/js/44.12f7103f.js"><link rel="prefetch" href="/old-times/assets/js/45.eae87b9f.js"><link rel="prefetch" href="/old-times/assets/js/46.968cec26.js"><link rel="prefetch" href="/old-times/assets/js/47.e8b4b99c.js"><link rel="prefetch" href="/old-times/assets/js/5.d068c496.js"><link rel="prefetch" href="/old-times/assets/js/6.10877874.js"><link rel="prefetch" href="/old-times/assets/js/7.6162c803.js"><link rel="prefetch" href="/old-times/assets/js/8.dd594439.js"><link rel="prefetch" href="/old-times/assets/js/9.a8d862cf.js">
+    <link rel="stylesheet" href="/old-times/assets/css/0.styles.c5586acc.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/old-times/" class="home-link router-link-active"><img src="/old-times/img/EB-logo.png" alt="Shirs's blog" class="logo"> <span class="site-name can-hide">Shirs's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/old-times/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/old-times/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e3/" class="nav-link">spring boot</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e5/" class="nav-link">java基础</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e4/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9005/" class="nav-link">设计模式</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9002/" class="nav-link">注解</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9016/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9018/" class="nav-link">debug</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9010/" class="nav-link">数据库</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="杂谈" class="dropdown-title"><a href="/old-times/Miscellany/" class="link-title">杂谈</a> <span class="title" style="display:none;">杂谈</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9028/" class="nav-link">自言自语</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><a href="/old-times/cloudnative/" class="link-title">云原生</a> <span class="title" style="display:none;">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9019/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9025/" class="nav-link">prometheus</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9026/" class="nav-link">operator</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9027/" class="nav-link">jeakins</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9015/" class="nav-link">k8s</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="go" class="dropdown-title"><a href="/old-times/go/" class="link-title">go</a> <span class="title" style="display:none;">go</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9020/" class="nav-link">go</a></li></ul></div></div><div class="nav-item"><a href="/old-times/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/old-times/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/old-times/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/old-times/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/shirongsheng/old-times" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/old-times/img/panda.jpg"> <div class="blogger-info"><h3>shirongsheng</h3> <span>全栈在路上</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/old-times/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/old-times/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e3/" class="nav-link">spring boot</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e5/" class="nav-link">java基础</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e4/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9005/" class="nav-link">设计模式</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9002/" class="nav-link">注解</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9016/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9018/" class="nav-link">debug</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9010/" class="nav-link">数据库</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="杂谈" class="dropdown-title"><a href="/old-times/Miscellany/" class="link-title">杂谈</a> <span class="title" style="display:none;">杂谈</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9028/" class="nav-link">自言自语</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><a href="/old-times/cloudnative/" class="link-title">云原生</a> <span class="title" style="display:none;">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9019/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9025/" class="nav-link">prometheus</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9026/" class="nav-link">operator</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9027/" class="nav-link">jeakins</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9015/" class="nav-link">k8s</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="go" class="dropdown-title"><a href="/old-times/go/" class="link-title">go</a> <span class="title" style="display:none;">go</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9020/" class="nav-link">go</a></li></ul></div></div><div class="nav-item"><a href="/old-times/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/old-times/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/old-times/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/old-times/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/shirongsheng/old-times" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>spring boot</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>java基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/old-times/pages/8309a5b876fc9005/" class="sidebar-link">设计模式概述</a></li><li><a href="/old-times/pages/8309a5b876fc9001/" class="sidebar-link">单例模式</a></li><li><a href="/old-times/pages/8309a5b876fc9003/" class="sidebar-link">工厂模式</a></li><li><a href="/old-times/pages/8309a5b876fc9004/" class="sidebar-link">构造者模式</a></li><li><a href="/old-times/pages/8309a5b876fc9006/" aria-current="page" class="active sidebar-link">代理模式</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/old-times/pages/8309a5b876fc9007/" class="sidebar-link">模板模式</a></li><li><a href="/old-times/pages/8309a5b876fc9008/" class="sidebar-link">原型模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>注解</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>debug</span> <span class="arrow right"></span></p> <!----></section></li></ul> <div class="sidebar-slot sidebar-slot-bottom"><!-- 正方形 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="3508773082"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div></aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/old-times/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/old-times/technology/#技术" data-v-0c557b5e>技术</a></li><li data-v-0c557b5e><a href="/old-times/technology/#设计模式" data-v-0c557b5e>设计模式</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="https://github.com/shirongsheng" target="_blank" title="作者" class="beLink" data-v-0c557b5e>shirongsheng</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2021-07-01</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">代理模式<!----></h1> <div class="page-slot page-slot-top"><!-- 固定100% * 90px可显示，max-height:90px未见显示-->
+     <ins class="adsbygoogle"
+          style="display:inline-block;width:100%;max-height:90px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6625304284"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="theme-vdoing-content content__default"><h3 id="概述"><a href="#概述" class="header-anchor">#</a> 概述</h3> <p>说起代理，我们很容易有一个概念，这里，我打一个比方。</p> <p>大学时的小简学的是软件工程，但他不和大部分人一样死磕java，而且买了<br>
+一个服务器，自己研究搭造了一个无限流量的app，并将这个app以50元一个月<br>
+的价格出售给其他需要的同学，但是他发现这样赚钱还是太慢，于是就<br>
+以35元/月的价格招收代理，让代理来帮忙销售。这就是我们常说的代理。</p> <p>那么代理模式是什么呢？<br>
+代理模式就是目标对象不想或无法被直接调用时，
+通过代理可以有效地控制客户端对被代理对象的直接访问，
+进而可以很好地隐藏和保护被代理对象。</p> <h3 id="静态代理"><a href="#静态代理" class="header-anchor">#</a> 静态代理</h3> <h4 id="简单代理-与被代理类功能一致"><a href="#简单代理-与被代理类功能一致" class="header-anchor">#</a> 简单代理，与被代理类功能一致</h4> <p>我们想象如下一个场景。</p> <p>电影厂商会拍摄电影，我们将这个场景抽象为一个接口。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface Movie {
+    void play();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>现在，一个美国电影厂商拍摄了钢铁侠这部电影，我们同样给抽象出来。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class IronManMovies implements Movie{
+    @Override
+    public void play() {
+        System.out.println(&quot;正在放映《钢铁侠》电影&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>如今电影上映了，如何让全国各地的观众都可以看到呢，于是电影厂商就
+委托全球各地的影院来作为代理，播放《钢铁侠》这部电影。</p> <p>于是，我们抽象出一个Cinema影院类，该类(影院)也需要能够播放《钢铁侠》
+呀，于是我们让Cinema也实现movies接口，并提供一个有参构造，在&quot;影院
+具体播放电影时&quot;传入电影《钢铁侠》电影子类作为具体实现，这样我们
+就在不改变被代理类的基础上就完成了代理功能。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Cinema implements Movie{
+
+    private Movie movie;
+
+    public Cinema(Movie movie){
+        this.movie = movie;
+    }
+
+    @Override
+    public void play() {
+        movie.play();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class ProxyTest {
+    public static void main(String[] args) {
+        IronManMovies ironManMovies = new IronManMovies();
+        Cinema cinema = new Cinema(ironManMovies);
+        cinema.play();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>正在放映《钢铁侠》电影
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="代理功能增强"><a href="#代理功能增强" class="header-anchor">#</a> 代理功能增强</h4> <p>以上就完成了&quot;电影&quot;的代理操作，但是我们可以看到，代理类和被代理类
+的功能是完全一致的，被代理类除了不想或者不能被直接使用的情况下，我们
+需要借助代理类来起到一个中介的作用，这个操作的同时，往往伴随着
+被代理类的功能增强。</p> <p>同样是上面电影厂商的场景，电影厂商此时要求到，我们钢铁侠这次播出完了，
+于此同时我们紧接着就要拍摄《美国队长》，我们要求所有代理播放《钢铁侠》
+的影院在电影播放完成后插播我们的《美国队长》的彩蛋，起到一个广告效应。</p> <p>那么，我们要如何实现这种功能呢？</p> <p>我们修改上述的Cinema类。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    @Override
+    public void play() {
+        movie.play();
+        moviesAdvertisement();
+    }
+
+    public void moviesAdvertisement(){
+        System.out.println(&quot;现在是电影广告时间，我们将在7月份上映《美国队长》，敬请期待~&quot;);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>测试类不变，输出如下。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>正在放映《钢铁侠》电影
+现在是电影广告时间，我们将在7月份上映《美国队长》，敬请期待~
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>此时，我们对被代理类实现了功能增强。
+这种方式也被称作为静态代理。</p> <p>为什么被称为静态呢？应为我们的代理类在程序编译期就已经确定了，
+代理类和被代理类都实现了同一个接口。由此我们也可以分析到静态代理
+的优点和缺点。</p> <p>优点：在不改变被代理类的基础上，我们可以调用目标类的方法，并完成
+一定的功能增强，符合开闭原则。<br>
+缺点：由于代理类要实现目标接口，当目标类较多的情况下，我们会产生
+大量的代理类，代码冗余且工作量大。</p> <p>此时，可以举例说明，如今短视频盛行，我们同样抽象一个短视频接口。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface ShortVideo {
+    void play();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>其具体实现可以为西瓜视频、抖音短视频等，如今需要
+宣传一个明星的复出介绍，我们抽象出抖音短视频的具体实现。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Douyin implements ShortVideo{
+    @Override
+    public void play() {
+        System.out.println(&quot;我是抖音短视频，正在播放吴思聪的复出介绍~&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>由于代理类和被代理类需要实现同一个接口，那么我们为了
+完成对短视频播放的代理功能，就需要重新实现一个代理类了。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class DouYin implements ShortVideo{
+
+    private ShortVideo shortVideo;
+
+    public DouYin(ShortVideo shortVideo){
+        this.shortVideo = shortVideo;
+    }
+
+    @Override
+    public void play() {
+        shortVideo.play();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>        StarIntroduction starIntroduction = new StarIntroduction();
+        DouYin douYin = new DouYin(starIntroduction);
+        douYin.play();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>输出如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>正在播放吴思聪的复出介绍~
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>以上就完成了短视频代理的实现，同样的，我们也可以对短视频代理进行共嗯
+增强。</p> <p>我们修改短视频代理类如下所示。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    @Override
+    public void play() {
+        douyinAdvertisement();
+        shortVideo.play();
+    }
+
+    public void douyinAdvertisement(){
+        System.out.println(&quot;欢迎来抖音观看短视频，看视频赢大礼！&quot;);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>输出如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>欢迎来抖音观看短视频，看视频赢大礼！
+正在播放吴思聪的复出介绍~
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>由此可以很明显看出静态代理的缺点，即由于代理类要实现目标接口，
+当目标类较多的情况下，我们会产生大量的代理类，代码冗余且工作量大。</p> <h3 id="jdk动态代理"><a href="#jdk动态代理" class="header-anchor">#</a> JDK动态代理</h3> <p>同样使用如上场景，我们可以如此实现代理类。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+public class JdkProxy implements InvocationHandler {
+
+    private Object object;
+
+    public JdkProxy(Object object){
+        this.object = object;
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        return method.invoke(object,args);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>        Movie movie = (Movie) Proxy.newProxyInstance(ironManMovies.getClass().getClassLoader(),
+                ironManMovies.getClass().getInterfaces(),
+                new JdkProxy(ironManMovies));
+
+        movie.play();
+
+        ShortVideo shortVideo = (ShortVideo) Proxy.newProxyInstance(starIntroduction.getClass().getClassLoader(),
+                starIntroduction.getClass().getInterfaces(),
+                new JdkProxy(starIntroduction));
+
+        shortVideo.play();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>正在放映《钢铁侠》电影
+正在播放吴思聪的复出介绍~
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>如上就是JDK动态代理的实现了，其原理就是根据反射，在程序运行时
+动态生成具体实现的子类。</p> <h3 id="cglib动态代理"><a href="#cglib动态代理" class="header-anchor">#</a> CGLIB动态代理</h3> <p>CGLIB动态代理适用于没有接口存在场景下。</p> <p>被代理类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class SpiderManMovies{
+    public void play() {
+        System.out.println(&quot;正在放映《蜘蛛侠》电影&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>代理类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
+import java.lang.reflect.Method;
+
+public class CglibProxy implements MethodInterceptor {
+    @Override
+    public Object intercept(Object object, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+        return methodProxy.invokeSuper(object,args);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>SpiderManMovies spiderManMovies = (SpiderManMovies) Enhancer.create(SpiderManMovies.class,
+    new CglibProxy());
+spiderManMovies.play();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>输出如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>正在放映《蜘蛛侠》电影
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="模拟实现aop"><a href="#模拟实现aop" class="header-anchor">#</a> 模拟实现AOP</h3> <p>现在有一个User接口</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface UserService {
+    void delete();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>实现类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class UserServiceImpl implements UserService{
+    @Override
+    public void delete() {
+        System.out.println(&quot;已删除1条数据&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>我们现在要对这个类进行日志记录操作</p> <p>BaseAspect类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
+import java.lang.reflect.Method;
+
+public abstract class BaseAspect implements MethodInterceptor {
+
+    @Override
+    public Object intercept(Object object, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+
+        if (isInterceptor(method)){
+            before();
+            methodProxy.invokeSuper(object,args);
+            after();
+        }else
+            methodProxy.invokeSuper(object,args);
+        return object;
+    }
+
+    public void before(){
+
+    }
+
+    public void after(){
+
+    }
+
+    public abstract boolean isInterceptor(Method method);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>日志切面类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import java.lang.reflect.Method;
+
+public class LogAspect extends BaseAspect{
+    @Override
+    public boolean isInterceptor(Method method) {
+        return method.getName().equals(&quot;delete&quot;);
+    }
+
+    public void before(){
+        System.out.println(&quot;删除方法开始...&quot;);
+    }
+
+    public void after(){
+        System.out.println(&quot;删除方法结束...&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import net.sf.cglib.proxy.Enhancer;
+
+public class AopTest {
+    public static void main(String[] args) {
+        UserServiceImpl user = (UserServiceImpl) Enhancer.create(UserServiceImpl.class,new LogAspect());
+        user.delete();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>删除方法开始...
+已删除1条数据
+删除方法结束...
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>其中用到了模板方法模式。</p></div></div> <div class="page-slot page-slot-bottom"><!-- 横向自适应 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6620245489"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/shirongsheng/old-times/edit/master/docs/01.技术/04.设计模式/04.代理模式.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021/07/04, 23:49:01</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/old-times/pages/8309a5b876fc9004/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">构造者模式</div></a> <a href="/old-times/pages/8309a5b876fc9007/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">模板模式</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/old-times/pages/8309a5b876fc9004/" class="prev">构造者模式</a></span> <span class="next"><a href="/old-times/pages/8309a5b876fc9007/">模板模式</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/old-times/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/old-times/pages/8309a5b876fc9030/"><div>
+            本地虚拟机安装k8s
+            <!----></div></a> <span class="date">12-16</span></dt></dl><dl><dd>02</dd> <dt><a href="/old-times/pages/8309a5b876fc9031/"><div>
+            linux下安装go环境
+            <!----></div></a> <span class="date">12-16</span></dt></dl><dl><dd>03</dd> <dt><a href="/old-times/pages/8309a5b876fc9029/"><div>
+            工程管理
+            <!----></div></a> <span class="date">09-13</span></dt></dl> <dl><dd></dd> <dt><a href="/old-times/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:599073585@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/shirongsheng" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="#" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2021-2022
+    <span>shirongsheng | <a href="https://github.com/shirongsheng" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <div class="custom-html-window custom-html-window-rb" style="display:;"><div class="custom-wrapper"><span class="close-but">×</span> <div><!-- 固定160*160px -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;max-width:160px;max-height:160px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="8377369658"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div></div></div></div><div class="global-ui"></div></div>
+    <script src="/old-times/assets/js/app.285e83f8.js" defer></script><script src="/old-times/assets/js/2.448ed11b.js" defer></script><script src="/old-times/assets/js/21.53ed739e.js" defer></script>
+  </body>
+</html>

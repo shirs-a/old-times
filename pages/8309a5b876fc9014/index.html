@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>线程 | Shirs&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/old-times/img/favicon.ico">
+    <script data-ad-client="ca-pub-7828333725993554" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="不会前端的java不是好全栈">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/old-times/assets/css/0.styles.c5586acc.css" as="style"><link rel="preload" href="/old-times/assets/js/app.285e83f8.js" as="script"><link rel="preload" href="/old-times/assets/js/2.448ed11b.js" as="script"><link rel="preload" href="/old-times/assets/js/16.568531ff.js" as="script"><link rel="prefetch" href="/old-times/assets/js/10.ab33aa3c.js"><link rel="prefetch" href="/old-times/assets/js/11.0c2fdda6.js"><link rel="prefetch" href="/old-times/assets/js/12.506521d6.js"><link rel="prefetch" href="/old-times/assets/js/13.3d82def7.js"><link rel="prefetch" href="/old-times/assets/js/14.6dbaaa42.js"><link rel="prefetch" href="/old-times/assets/js/15.24b53a57.js"><link rel="prefetch" href="/old-times/assets/js/17.399efd18.js"><link rel="prefetch" href="/old-times/assets/js/18.19e554c0.js"><link rel="prefetch" href="/old-times/assets/js/19.0444e602.js"><link rel="prefetch" href="/old-times/assets/js/20.584034cb.js"><link rel="prefetch" href="/old-times/assets/js/21.53ed739e.js"><link rel="prefetch" href="/old-times/assets/js/22.bd821f91.js"><link rel="prefetch" href="/old-times/assets/js/23.e100b6a0.js"><link rel="prefetch" href="/old-times/assets/js/24.e2d13426.js"><link rel="prefetch" href="/old-times/assets/js/25.4b96e77b.js"><link rel="prefetch" href="/old-times/assets/js/26.d20d960a.js"><link rel="prefetch" href="/old-times/assets/js/27.775a9c73.js"><link rel="prefetch" href="/old-times/assets/js/28.94d5bf11.js"><link rel="prefetch" href="/old-times/assets/js/29.243de78e.js"><link rel="prefetch" href="/old-times/assets/js/3.23ad075e.js"><link rel="prefetch" href="/old-times/assets/js/30.dc7f8c54.js"><link rel="prefetch" href="/old-times/assets/js/31.09d81d7c.js"><link rel="prefetch" href="/old-times/assets/js/32.06346162.js"><link rel="prefetch" href="/old-times/assets/js/33.e22edaf4.js"><link rel="prefetch" href="/old-times/assets/js/34.b0239bad.js"><link rel="prefetch" href="/old-times/assets/js/35.4608b741.js"><link rel="prefetch" href="/old-times/assets/js/36.6e8e2bb9.js"><link rel="prefetch" href="/old-times/assets/js/37.47c8d4ba.js"><link rel="prefetch" href="/old-times/assets/js/38.3f91f852.js"><link rel="prefetch" href="/old-times/assets/js/39.e5724af8.js"><link rel="prefetch" href="/old-times/assets/js/4.13662291.js"><link rel="prefetch" href="/old-times/assets/js/40.83708bb9.js"><link rel="prefetch" href="/old-times/assets/js/41.390580b8.js"><link rel="prefetch" href="/old-times/assets/js/42.17de8c7e.js"><link rel="prefetch" href="/old-times/assets/js/43.9f7cc40a.js"><link rel="prefetch" href="/old-times/assets/js/44.12f7103f.js"><link rel="prefetch" href="/old-times/assets/js/45.eae87b9f.js"><link rel="prefetch" href="/old-times/assets/js/46.968cec26.js"><link rel="prefetch" href="/old-times/assets/js/47.e8b4b99c.js"><link rel="prefetch" href="/old-times/assets/js/5.d068c496.js"><link rel="prefetch" href="/old-times/assets/js/6.10877874.js"><link rel="prefetch" href="/old-times/assets/js/7.6162c803.js"><link rel="prefetch" href="/old-times/assets/js/8.dd594439.js"><link rel="prefetch" href="/old-times/assets/js/9.a8d862cf.js">
+    <link rel="stylesheet" href="/old-times/assets/css/0.styles.c5586acc.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/old-times/" class="home-link router-link-active"><img src="/old-times/img/EB-logo.png" alt="Shirs's blog" class="logo"> <span class="site-name can-hide">Shirs's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/old-times/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/old-times/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e3/" class="nav-link">spring boot</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e5/" class="nav-link">java基础</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e4/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9005/" class="nav-link">设计模式</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9002/" class="nav-link">注解</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9016/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9018/" class="nav-link">debug</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9010/" class="nav-link">数据库</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="杂谈" class="dropdown-title"><a href="/old-times/Miscellany/" class="link-title">杂谈</a> <span class="title" style="display:none;">杂谈</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9028/" class="nav-link">自言自语</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><a href="/old-times/cloudnative/" class="link-title">云原生</a> <span class="title" style="display:none;">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9019/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9025/" class="nav-link">prometheus</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9026/" class="nav-link">operator</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9027/" class="nav-link">jeakins</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9015/" class="nav-link">k8s</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="go" class="dropdown-title"><a href="/old-times/go/" class="link-title">go</a> <span class="title" style="display:none;">go</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9020/" class="nav-link">go</a></li></ul></div></div><div class="nav-item"><a href="/old-times/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/old-times/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/old-times/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/old-times/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/shirongsheng/old-times" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/old-times/img/panda.jpg"> <div class="blogger-info"><h3>shirongsheng</h3> <span>全栈在路上</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/old-times/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/old-times/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e3/" class="nav-link">spring boot</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e5/" class="nav-link">java基础</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e4/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9005/" class="nav-link">设计模式</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9002/" class="nav-link">注解</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9016/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9018/" class="nav-link">debug</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9010/" class="nav-link">数据库</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="杂谈" class="dropdown-title"><a href="/old-times/Miscellany/" class="link-title">杂谈</a> <span class="title" style="display:none;">杂谈</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9028/" class="nav-link">自言自语</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><a href="/old-times/cloudnative/" class="link-title">云原生</a> <span class="title" style="display:none;">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9019/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9025/" class="nav-link">prometheus</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9026/" class="nav-link">operator</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9027/" class="nav-link">jeakins</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9015/" class="nav-link">k8s</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="go" class="dropdown-title"><a href="/old-times/go/" class="link-title">go</a> <span class="title" style="display:none;">go</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9020/" class="nav-link">go</a></li></ul></div></div><div class="nav-item"><a href="/old-times/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/old-times/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/old-times/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/old-times/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/shirongsheng/old-times" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>spring boot</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>java基础</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/old-times/pages/8309a5b876fc95e5/" class="sidebar-link">将List中的元素以分隔符拼接并返回字符串</a></li><li><a href="/old-times/pages/8309a5b876fc9011/" class="sidebar-link">接口和抽象类的区别</a></li><li><a href="/old-times/pages/8309a5b876fc9014/" aria-current="page" class="active sidebar-link">线程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#线程的常用操作" class="sidebar-link">线程的常用操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#获取当前线程的名字" class="sidebar-link">获取当前线程的名字</a></li></ul></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#线程的创建方式" class="sidebar-link">线程的创建方式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#继承thread类" class="sidebar-link">继承Thread类</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#实现runnable接口" class="sidebar-link">实现Runnable接口</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#实现callable接口" class="sidebar-link">实现Callable接口</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#futuretask使用" class="sidebar-link">FutureTask使用</a></li></ul></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#run-方法和start-方法有什么不同" class="sidebar-link">run()方法和start()方法有什么不同</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#volatile" class="sidebar-link">volatile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#概述-2" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#原子性" class="sidebar-link">原子性</a></li></ul></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#线程池" class="sidebar-link">线程池</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#为什么要使用线程池" class="sidebar-link">为什么要使用线程池？</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#线程池概述" class="sidebar-link">线程池概述</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#笔记" class="sidebar-link">笔记</a></li></ul></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#辅助工具" class="sidebar-link">辅助工具</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#countdownlatch" class="sidebar-link">CountDownLatch</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#cyclicbarrier" class="sidebar-link">CyclicBarrier</a></li><li class="sidebar-sub-header"><a href="/old-times/pages/8309a5b876fc9014/#semaphore" class="sidebar-link">Semaphore</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>注解</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>debug</span> <span class="arrow right"></span></p> <!----></section></li></ul> <div class="sidebar-slot sidebar-slot-bottom"><!-- 正方形 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="3508773082"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div></aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/old-times/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/old-times/technology/#技术" data-v-0c557b5e>技术</a></li><li data-v-0c557b5e><a href="/old-times/technology/#java基础" data-v-0c557b5e>java基础</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="https://github.com/shirongsheng" target="_blank" title="作者" class="beLink" data-v-0c557b5e>shirongsheng</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2021-08-28</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">线程<!----></h1> <div class="page-slot page-slot-top"><!-- 固定100% * 90px可显示，max-height:90px未见显示-->
+     <ins class="adsbygoogle"
+          style="display:inline-block;width:100%;max-height:90px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6625304284"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="theme-vdoing-content content__default"><h2 id="概述"><a href="#概述" class="header-anchor">#</a> 概述</h2> <p>提起线程，难免要被人问一嘴线程和进程的区别。</p> <p>其实，所谓进程，可以理解为一个运行中的程序，每一个程序都是一个进程。</p> <p>线程，是进程内部的划分，不同的功能可以是多个线程构成的。</p> <p>关于线程，我们需要了解很多方面，包括但不限于线程的创建方式、
+线程池的使用、线程安全等等一系列操作。</p> <h2 id="线程的常用操作"><a href="#线程的常用操作" class="header-anchor">#</a> 线程的常用操作</h2> <h3 id="获取当前线程的名字"><a href="#获取当前线程的名字" class="header-anchor">#</a> 获取当前线程的名字</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>Thread.currentThread()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="线程的创建方式"><a href="#线程的创建方式" class="header-anchor">#</a> 线程的创建方式</h2> <h3 id="继承thread类"><a href="#继承thread类" class="header-anchor">#</a> 继承Thread类</h3> <p>线程实现方式的第一种就是继承Thread类，并重写run方法，可以看到，
+run方法是没有返回值的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class NewThread_v1 extends Thread {
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;启动了&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class NewThreadTest {
+    public static void main(String[] args) {
+        NewThread_v1 newThread_v1 = new NewThread_v1();
+        NewThread_v1 newThread_v2 = new NewThread_v1();
+        newThread_v1.start();
+        newThread_v2.start();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Thread-0启动了
+Thread-1启动了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>可以看到，我们创建了两个NewThread_v1实例，通过Thread.currentThread().getName()
+获取当前线程的名字并打印输出，构造了两个不同的线程。</p> <h3 id="实现runnable接口"><a href="#实现runnable接口" class="header-anchor">#</a> 实现Runnable接口</h3> <p>实现线程的第二种方式就是实现Runnable接口，可以看到，实现Runnable
+接口，也是需要实现接口的run方法，该run方法与继承thread类需要重写
+的方法基本一致。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class NewThread_v2 implements Runnable {
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;启动了&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class NewThreadTest {
+    public static void main(String[] args) {
+        //实现runable接口
+        NewThread_v2 newThread_v2 = new NewThread_v2();
+        new Thread(newThread_v2).start();
+        new Thread(newThread_v2).start();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Thread-0启动了
+Thread-1启动了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>继承thread类的子类，本身就具备了thread的类型，可以调用父类的start
+方法，而实现了runnable接口的类本身并不是一个“线程类”，需要创建一个
+thread实例，并将本身作为参数传给thread，从而调用start方法。</p> <img src="/old-times/png/thread/1.jpg"> <h3 id="实现callable接口"><a href="#实现callable接口" class="header-anchor">#</a> 实现Callable接口</h3> <p>实现线程第三种方式就是实现Callable接口，与前两种方式最大的不同
+就是实现callable接口的线程可以有返回值，先看实现方式。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import java.util.concurrent.Callable;
+
+public class NewThread_v3 implements Callable {
+    @Override
+    public Object call() throws Exception {
+        String result = Thread.currentThread().getName() + &quot;启动了&quot;;
+        System.out.println(result);
+        return result;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
+public class NewThreadTest {
+    public static void main(String[] args) {
+        //实现Callable接口
+        NewThread_v3 newThread_v3 = new NewThread_v3();
+        FutureTask futureTask = new FutureTask&lt;&gt;(newThread_v3);
+        FutureTask futureTask2 = new FutureTask&lt;&gt;(newThread_v3);
+        new Thread(futureTask).start();
+        new Thread(futureTask2).start();
+        try {
+            System.out.println(&quot;获取返回值：&quot; + futureTask.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Thread-0启动了
+Thread-1启动了
+获取返回值：Thread-0启动了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>实现Callable接口的方式可以总结为如下流程</p> <p>1、创建一个实现Callable的实现类。</p> <p>2、实现call()方法，将此线程需要执行的操作声明在call()中。</p> <p>3、创建Callable接口实现类的对象。</p> <p>4、将此Callable接口实现类的对象作为传递到FutureTask构造器中，创建FutureTask的对象。</p> <p>5、将FutureTask的对象作为参数传递到Thread类的构造器中，创建Thread对象，并调用start()方法。</p> <p>如此，便完成了线程的创建。</p> <p>上面可以看到，Thread类的参数为一个Runnable接口，而FutureTask也可以
+作为Thread的参数，毫无疑问的是FutureTask肯定也实现了Runnable接口。</p> <p>首先创建FutureTask类时，该构造方法会接收一个Callable类型的参数</p> <img src="/old-times/png/thread/2.jpg"> <p>而FutureTask类实现了RunnableFuture接口。</p> <img src="/old-times/png/thread/3.jpg"> <p>RunnableFuture接口中只有一个run方法，同时该接口实现了Runnable, Future
+两个接口。</p> <img src="/old-times/png/thread/4.jpg"> <p>这也解释了为什么创建Thread类时，可以接收一个FutureTask类型的参数。</p> <h4 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h4> <p>与使用Runnable相比，Callable功能更强大：</p> <p>1、相比于run()方法，call()方法可以有返回值</p> <p>2、call()方法可以抛出异常，被外面的操作捕获，获取异常的信息</p> <p>3、Callable支持泛型的返回值</p> <p>4、需要借助FutureTask类，比如获取返回结果</p> <p>Future接口：</p> <p>1、可以对具体Runnable、Callable任务的执行结果进行取消、查询是否完成、获取结果等。</p> <p>2、FutureTask是Future接口的唯一的实现类。</p> <p>3、FutureTask同时实现了Runnable、Future接口，它既可以作为Runnable被线程执行，
+也可以作为Future得到Callable的返回值。</p> <h3 id="futuretask使用"><a href="#futuretask使用" class="header-anchor">#</a> FutureTask使用</h3> <h4 id="获取返回值"><a href="#获取返回值" class="header-anchor">#</a> 获取返回值</h4> <p>通过futureTask.get()获取call方法的返回值。</p> <h4 id="待补充"><a href="#待补充" class="header-anchor">#</a> 待补充...</h4> <h2 id="run-方法和start-方法有什么不同"><a href="#run-方法和start-方法有什么不同" class="header-anchor">#</a> run()方法和start()方法有什么不同</h2> <p>run()方法和start()方法有什么不同,又是一个老生常谈的问题，且看下面示例。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class RunStartTest {
+    public static void main(String[] args) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(&quot;新建线程:&quot; + Thread.currentThread().getName() + &quot;，启动了&quot;);
+            }
+        });
+        thread.run();
+        System.out.println(&quot;主线程:&quot; + Thread.currentThread().getName() + &quot;，启动了&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>新建线程:main，启动了
+主线程:main，启动了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>我们都知道，正常情况下，在一个方法中，程序都是顺序执行的,上面的示例代码
+新建了一个线程，但是并没有调用线程的start方法，而是调用了run方法，
+输出中也使用了Thread.currentThread().getName()方法来观察当前是哪个
+线程。</p> <p>从输出中可以看到，两者都在主线程main中，我们新增一个线程的目的好像并
+没有达到，答案已经呼之欲出了，如果只是调用run方法，那么只是单纯
+调用了一个方法，无法起到新增线程的目的。</p> <p>那么我们把方法改为start();再来看看输出情况。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>主线程:main，启动了
+新建线程:Thread-0，启动了
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>可以看到，主线程的流程并没有因为新线程的启动而发生“等待”，而是
+先执行了主线程的方法，另一个线程就绪了后也执行了，而且，可以看到
+线程的名字也发生了改变，说明我们新增的线程是另外一个，不再是
+主线程了。</p> <h4 id="总结-2"><a href="#总结-2" class="header-anchor">#</a> 总结</h4> <p>run方法只是单纯的调用方法，还是当前方法所处的线程内，会按照代码
+顺序顺序执行，而start方法才是多线程的创建方式。</p> <h2 id="volatile"><a href="#volatile" class="header-anchor">#</a> volatile</h2> <h3 id="概述-2"><a href="#概述-2" class="header-anchor">#</a> 概述</h3> <p>计算机在执行程序时，每条指令都是在CPU中执行的，而执行指令过程中，
+势必涉及到数据的读取和写入。由于程序运行过程中的临时数据是存放在
+主存（物理内存）当中的，这时就存在一个问题，由于CPU执行速度很快，
+而从内存读取数据和向内存写入数据的过程跟CPU执行指令的速度比起来
+要慢的多，因此如果任何时候对数据的操作都要通过和内存的交互来进行，
+会大大降低指令执行的速度。因此在CPU里面就有了高速缓存。</p> <p>也就是，当程序在运行过程中，会将运算需要的数据从主存复制一份到
+CPU的高速缓存当中，那么CPU进行计算时就可以直接从它的高速缓存读取
+数据和向其中写入数据，当运算结束之后，再将高速缓存中的数据刷新到
+主存当中。举个简单的例子，比如下面的这段代码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>i = i + 1;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当线程执行这个语句时，会先从主存当中读取i的值，然后复制一份到高速
+缓存当中，然后CPU执行指令对i进行加1操作，然后将数据写入高速缓存，
+最后将高速缓存中i最新的值刷新到主存当中。</p> <p>这个代码在单线程中运行是没有任何问题的，但是在多线程中运行就会有
+问题了。在多核CPU中，每条线程可能运行于不同的CPU中，因此每个线程
+运行时有自己的高速缓存（对单核CPU来说，其实也会出现这种问题，只不过
+是以线程调度的形式来分别执行的）。比如同时有2个线程执行这段代码，
+假如初始时i的值为0，那么我们希望两个线程执行完之后i的值变为2。
+但是事实会是这样吗？</p> <p>可能存在下面一种情况：初始时，两个线程分别读取i的值存入各自所在的
+CPU的高速缓存当中，然后线程1进行加1操作，然后把i的最新值1写入到
+内存。此时线程2的高速缓存当中i的值还是0，进行加1操作之后，i的值
+为1，然后线程2把i的值写入内存。</p> <p>最终结果i的值是1，而不是2。</p> <h3 id="原子性"><a href="#原子性" class="header-anchor">#</a> 原子性</h3> <h2 id="线程池"><a href="#线程池" class="header-anchor">#</a> 线程池</h2> <h3 id="为什么要使用线程池"><a href="#为什么要使用线程池" class="header-anchor">#</a> 为什么要使用线程池？</h3> <p>提及线程池，这个彷佛也是一个无法避免的问题(为什么这么多无法避免的问题- -)。</p> <p>其实这个也比较好理解，可以联想数据库连接池，如果没有druid等等数据库
+连接池的存在，那么我们每一次操作数据库，都要进行一个数据库连接，
+这样频繁的I/O操作，会对系统造成相当程度的性能损耗，极大的降低我们
+系统的性能，而数据库连接池的出现，就可以让我们初始化一个连接，只有
+在我们使用的时候才会建立连接，不用的时候则是处于空闲状态，对系统
+性能有极大的提升。</p> <p>线程池也是相同的原理，使用线程池可以有如下好处</p> <p>1、随着业务量的增加，我们可以会创建越来越多的线程，
+如果不加限制的创建线程，那么很容易造成内存溢出，从而导致程序崩溃，
+而使用线程池，可以对线程创建的数量加以限制，可以有效避免该问题。</p> <p>2、如果程序中有大量短时间任务的线程任务，由于创建和销毁线程需要
+和底层操作系统交互，大量时间都耗费在创建和销毁线程上，因而比较
+浪费时间，系统效率很低<br>
+而线程池里的每一个线程任务结束后，并不会死亡，而是再次回到线程池
+中成为空闲状态，等待下一个对象来使用，因而借助线程池可以提高程序
+的执行效率</p> <h3 id="线程池概述"><a href="#线程池概述" class="header-anchor">#</a> 线程池概述</h3> <p>在使用线程池之前，可以了解相关的概念。</p> <h4 id="executors"><a href="#executors" class="header-anchor">#</a> Executors</h4> <p>Executors是一个使用了工厂模式的类，通过Executors我们可以创建常用的
+四种线程池，如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//eg：调用方式
+ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(100);
+
+//工厂方法
+ public static ExecutorService newFixedThreadPool(int var0) {
+        return new ThreadPoolExecutor(var0, var0, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
+  }
+	
+  public static ExecutorService newSingleThreadExecutor() {
+        return new Executors.FinalizableDelegatedExecutorService(new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue()));
+  }
+ 
+  public static ExecutorService newCachedThreadPool() {
+        return new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue());
+  }
+ 
+  public static ScheduledExecutorService newScheduledThreadPool(int var0) {
+        return new ScheduledThreadPoolExecutor(var0);
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h4 id="executor"><a href="#executor" class="header-anchor">#</a> Executor</h4> <p>Executor和Executors很像，很容易混淆，但其实也很容易区分，Executors
+就是如上述所说，我们在创建线程池时会使用到，而Executor</p> <h3 id="笔记"><a href="#笔记" class="header-anchor">#</a> 笔记</h3> <p>上下文切换---&gt;从一个任务切换到另一个任务</p> <p>并发通常是提高程序在单处理器上的性能。
+多线程意味着更大的开销，但是如果一个顺序执行的程序在某一流程中
+被阻塞了(通常是I/O)，那么程序将会等待在这里；但如果是多线程程序
+其他流程仍会正常的执行。</p> <p>实现并发最直接的方式是在操作系统级别使用进程，进程之间是互相隔离的，
+彼此不会干涉，但java中的并发编程存在如内存/I/O这种资源共享的场景。</p> <h2 id="辅助工具"><a href="#辅助工具" class="header-anchor">#</a> 辅助工具</h2> <h3 id="countdownlatch"><a href="#countdownlatch" class="header-anchor">#</a> CountDownLatch</h3> <p>想象如下一个场景，我们有一个系统点击商品有个详情信息，这个详情
+信息有商品名称，价格等基础信息，也有买了这个商品的用户对这个商品
+的评论。</p> <p>其中，评论和基础信息都在不同的节点上部署，隶属于不同的模块，我们
+再返回给前端的详情数据一定是调用这些接口再进行组装的。如下所示。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@PostMapping(&quot;/getDetails&quot;)
+public JsonObject getDetails(){
+    //调用基础信息
+    ...
+    baseInfo = ...
+
+    //调用评论信息
+    comment = ...
+
+    //拿到了全部信息，拼接商品详情并返回
+    details.setComment();
+    details.setBaseInfo();
+    return details;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>这种顺序执行的方式固然没错，但是当详情信息很多时，我们要分别
+调用不同的模块，如果其中有一个模块阻塞了，整个流程都会陷入
+超时的境地。</p> <p>此时，我们可以用多个线程分别来调用不同的模块，当所有的模块
+都执行完毕后，再在主线程即详情拼接返回给前端所在的线程执行即可。</p> <p>可以使用CountDownLatch,该类的构造器接收一个参数，一般几个线程
+就初始化为几，同时有两个方法，一个countdown(),分别在不同的
+线程中使用，线程执行完毕后调用该方法，可以将CountDownLatch初始化
+的值减一；另一个await()方法，再需要等待的线程中调用，线程会陷入
+阻塞状态，直至所有的线程执行完毕，级初始化的值变为0；</p> <p>首先准备调用评论模块的一个类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import com.alibaba.fastjson.JSONObject;
+
+public class Comment {
+    public JSONObject getComments() {
+        JSONObject comments = new JSONObject();
+        comments.put(&quot;coment1&quot;, &quot;不错不错&quot;);
+        comments.put(&quot;coment2&quot;, &quot;666,下次还买&quot;);
+        comments.put(&quot;coment3&quot;, &quot;这就推荐给朋友&quot;);
+        return comments;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>再准备一个调用基础信息的模块</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import com.alibaba.fastjson.JSONObject;
+
+public class BaseInfo {
+    public JSONObject getBaseInfo() {
+        JSONObject baseInfo = new JSONObject();
+        baseInfo.put(&quot;名称&quot;, &quot;AOC显示屏&quot;);
+        baseInfo.put(&quot;价格&quot;, &quot;1299&quot;);
+        baseInfo.put(&quot;库存&quot;, &quot;286&quot;);
+        return baseInfo;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>分别创建两个线程来调用两个模块</p> <p>调用基础信息模块</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import com.alibaba.fastjson.JSONObject;
+
+import java.util.concurrent.CountDownLatch;
+
+public class GetBaseInfoRunnable implements Runnable{
+
+    private CountDownLatch countDownLatch;
+
+    private JSONObject details;
+
+    public GetBaseInfoRunnable(CountDownLatch countDownLatch, JSONObject details){
+        this.countDownLatch = countDownLatch;
+        this.details = details;
+    }
+
+    @Override
+    public void run() {
+        //调用基础信息模块
+        JSONObject baseInfo = new BaseInfo().getBaseInfo();
+        details.put(&quot;baseInfo&quot;,baseInfo);
+        countDownLatch.countDown();
+        System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot;执行完毕，CountDownLatch=&quot; + countDownLatch);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>调用评论模块</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import com.alibaba.fastjson.JSONObject;
+
+import java.util.concurrent.CountDownLatch;
+
+public class GetCommentRunnable implements Runnable{
+
+    private CountDownLatch countDownLatch;
+
+    private JSONObject details;
+
+    public GetCommentRunnable(CountDownLatch countDownLatch,JSONObject details){
+        this.countDownLatch = countDownLatch;
+        this.details = details;
+    }
+
+    @Override
+    public void run() {
+        //调用评论模块
+        JSONObject comments = new Comment().getComments();
+        details.put(&quot;comments&quot;,comments);
+        countDownLatch.countDown();
+        System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot;执行完毕，CountDownLatch=&quot; + countDownLatch);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>测试类</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import com.alibaba.fastjson.JSONObject;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class CountDownLatchTest {
+
+    static JSONObject details = new JSONObject();
+
+    static JSONObject comments = new JSONObject();
+
+    static JSONObject baseInfo = new JSONObject();
+
+    static CountDownLatch countDownLatch = new CountDownLatch(2);
+
+    public static void main(String[] args) throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot;完成CountDownLatch初始化，CountDownLatch=&quot; + countDownLatch);
+        executorService.execute(new GetBaseInfoRunnable(countDownLatch, details));
+        executorService.execute(new GetCommentRunnable(countDownLatch, details));
+        //等待所有线程执行完
+        countDownLatch.await();
+        Thread.sleep(1000);
+        System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot;等待所有线程执行完毕了，CountDownLatch=&quot; + countDownLatch);
+        System.out.println(&quot;返回详情给前端：details=&quot; + details);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>线程：main完成CountDownLatch初始化，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 2]
+线程：pool-1-thread-1执行完毕，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 1]
+线程：pool-1-thread-2执行完毕，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 0]
+线程：main等待所有线程执行完毕了，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 0]
+返回详情给前端：details={&quot;baseInfo&quot;:{&quot;名称&quot;:&quot;AOC显示屏&quot;,&quot;价格&quot;:&quot;1299&quot;,&quot;库存&quot;:&quot;286&quot;},&quot;comments&quot;:{&quot;coment1&quot;:&quot;不错不错&quot;,&quot;coment2&quot;:&quot;666,下次还买&quot;,&quot;coment3&quot;:&quot;这就推荐给朋友&quot;}}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>将CountDownLatch初始化值改为3，由于我们只有两个线程来执行任务，
+导致只有只有两个线程调用countdown()方法，并没有减为0；固主线程
+一直再等待。此时，输出为</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>static CountDownLatch countDownLatch = new CountDownLatch(3);
+
+//输出
+
+线程：main完成CountDownLatch初始化，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 3]
+线程：pool-1-thread-1执行完毕，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 2]
+线程：pool-1-thread-2执行完毕，CountDownLatch=java.util.concurrent.CountDownLatch@675d3402[Count = 1]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="cyclicbarrier"><a href="#cyclicbarrier" class="header-anchor">#</a> CyclicBarrier</h3> <p>可以看出，CountDownLatch是一个线程受阻，等待除了阻塞线程以外的所有
+线程执行完毕，每执行完毕一个线程，coundown数量减一，当其为0时，受阻
+的线程会被唤醒。</p> <p>而CyclicBarrier不同，其是在每一个线程的任务执行完毕后执行await()方法
+，这样这个线程会被阻塞，会等待其他线程执行完毕，就像是一道栅栏，每一个
+到达栅栏前的人都会等待其他人，只有当所有人(线程)都到达后，一同唤醒
+所有的线程。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class CyclicBarrierTest {
+
+    public static void main(String[] args) {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+
+        for (int i = 0; i &lt; 3; i++) {
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println(Thread.currentThread().getName() + &quot;准备好了&quot;);
+                    try {
+                        cyclicBarrier.await();
+                        Thread.sleep(2000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName() + &quot;开始出发！&quot;);
+                }
+            });
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>pool-1-thread-1准备好了
+pool-1-thread-2准备好了
+pool-1-thread-3准备好了
+pool-1-thread-3开始出发！
+pool-1-thread-1开始出发！
+pool-1-thread-2开始出发！
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>同理，如果将上述循环改为2此，那么就满足不了条件，所有的线程
+都会被阻塞。</p> <h3 id="semaphore"><a href="#semaphore" class="header-anchor">#</a> Semaphore</h3> <p>Semaphore可以解决如下场景的问题，当我们需要读取几千个文件数据时，
+我们起了20个线程来并发读取，但是读取完了之后，需要将文件数据入库，
+但是此时只有十个数据库连接，我们就可以用Semaphore来处理这个场景。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
+
+public class SemaphoreTest {
+
+    public static void main(String[] args) {
+        //三个柜台办理业务
+        Semaphore semaphore = new Semaphore(3);
+        //五个人需要办理业务
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        for (int i = 0; i &lt; 5; i++) {
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        semaphore.acquire();
+                        System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot;正在办理业务&quot;);
+                        Thread.sleep(5000); //办理时间 5s
+                        semaphore.release();
+                        System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot;办理完了&quot;);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>线程：pool-1-thread-1正在办理业务
+线程：pool-1-thread-2正在办理业务
+线程：pool-1-thread-3正在办理业务
+线程：pool-1-thread-2办理完了
+线程：pool-1-thread-5正在办理业务
+线程：pool-1-thread-4正在办理业务
+线程：pool-1-thread-1办理完了
+线程：pool-1-thread-3办理完了
+线程：pool-1-thread-4办理完了
+线程：pool-1-thread-5办理完了
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>从输出可以看到，只能三个线程抢占到了资源，当三个线程使用完毕后，后两个
+线程也获得了资源。</p></div></div> <div class="page-slot page-slot-bottom"><!-- 横向自适应 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6620245489"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/shirongsheng/old-times/edit/master/docs/01.技术/03.java基础/02.线程.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021/11/03, 20:19:15</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/old-times/pages/8309a5b876fc9011/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">接口和抽象类的区别</div></a> <a href="/old-times/pages/8309a5b876fc9005/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">设计模式概述</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/old-times/pages/8309a5b876fc9011/" class="prev">接口和抽象类的区别</a></span> <span class="next"><a href="/old-times/pages/8309a5b876fc9005/">设计模式概述</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/old-times/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/old-times/pages/8309a5b876fc9030/"><div>
+            本地虚拟机安装k8s
+            <!----></div></a> <span class="date">12-16</span></dt></dl><dl><dd>02</dd> <dt><a href="/old-times/pages/8309a5b876fc9031/"><div>
+            linux下安装go环境
+            <!----></div></a> <span class="date">12-16</span></dt></dl><dl><dd>03</dd> <dt><a href="/old-times/pages/8309a5b876fc9029/"><div>
+            工程管理
+            <!----></div></a> <span class="date">09-13</span></dt></dl> <dl><dd></dd> <dt><a href="/old-times/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:599073585@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/shirongsheng" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="#" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2021-2022
+    <span>shirongsheng | <a href="https://github.com/shirongsheng" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <div class="custom-html-window custom-html-window-rb" style="display:;"><div class="custom-wrapper"><span class="close-but">×</span> <div><!-- 固定160*160px -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;max-width:160px;max-height:160px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="8377369658"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div></div></div></div><div class="global-ui"></div></div>
+    <script src="/old-times/assets/js/app.285e83f8.js" defer></script><script src="/old-times/assets/js/2.448ed11b.js" defer></script><script src="/old-times/assets/js/16.568531ff.js" defer></script>
+  </body>
+</html>

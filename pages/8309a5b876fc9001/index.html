@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>单例模式 | Shirs&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/old-times/img/favicon.ico">
+    <script data-ad-client="ca-pub-7828333725993554" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="不会前端的java不是好全栈">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/old-times/assets/css/0.styles.c5586acc.css" as="style"><link rel="preload" href="/old-times/assets/js/app.285e83f8.js" as="script"><link rel="preload" href="/old-times/assets/js/2.448ed11b.js" as="script"><link rel="preload" href="/old-times/assets/js/18.19e554c0.js" as="script"><link rel="prefetch" href="/old-times/assets/js/10.ab33aa3c.js"><link rel="prefetch" href="/old-times/assets/js/11.0c2fdda6.js"><link rel="prefetch" href="/old-times/assets/js/12.506521d6.js"><link rel="prefetch" href="/old-times/assets/js/13.3d82def7.js"><link rel="prefetch" href="/old-times/assets/js/14.6dbaaa42.js"><link rel="prefetch" href="/old-times/assets/js/15.24b53a57.js"><link rel="prefetch" href="/old-times/assets/js/16.568531ff.js"><link rel="prefetch" href="/old-times/assets/js/17.399efd18.js"><link rel="prefetch" href="/old-times/assets/js/19.0444e602.js"><link rel="prefetch" href="/old-times/assets/js/20.584034cb.js"><link rel="prefetch" href="/old-times/assets/js/21.53ed739e.js"><link rel="prefetch" href="/old-times/assets/js/22.bd821f91.js"><link rel="prefetch" href="/old-times/assets/js/23.e100b6a0.js"><link rel="prefetch" href="/old-times/assets/js/24.e2d13426.js"><link rel="prefetch" href="/old-times/assets/js/25.4b96e77b.js"><link rel="prefetch" href="/old-times/assets/js/26.d20d960a.js"><link rel="prefetch" href="/old-times/assets/js/27.775a9c73.js"><link rel="prefetch" href="/old-times/assets/js/28.94d5bf11.js"><link rel="prefetch" href="/old-times/assets/js/29.243de78e.js"><link rel="prefetch" href="/old-times/assets/js/3.23ad075e.js"><link rel="prefetch" href="/old-times/assets/js/30.dc7f8c54.js"><link rel="prefetch" href="/old-times/assets/js/31.09d81d7c.js"><link rel="prefetch" href="/old-times/assets/js/32.06346162.js"><link rel="prefetch" href="/old-times/assets/js/33.e22edaf4.js"><link rel="prefetch" href="/old-times/assets/js/34.b0239bad.js"><link rel="prefetch" href="/old-times/assets/js/35.4608b741.js"><link rel="prefetch" href="/old-times/assets/js/36.6e8e2bb9.js"><link rel="prefetch" href="/old-times/assets/js/37.47c8d4ba.js"><link rel="prefetch" href="/old-times/assets/js/38.3f91f852.js"><link rel="prefetch" href="/old-times/assets/js/39.e5724af8.js"><link rel="prefetch" href="/old-times/assets/js/4.13662291.js"><link rel="prefetch" href="/old-times/assets/js/40.83708bb9.js"><link rel="prefetch" href="/old-times/assets/js/41.390580b8.js"><link rel="prefetch" href="/old-times/assets/js/42.17de8c7e.js"><link rel="prefetch" href="/old-times/assets/js/43.9f7cc40a.js"><link rel="prefetch" href="/old-times/assets/js/44.12f7103f.js"><link rel="prefetch" href="/old-times/assets/js/45.eae87b9f.js"><link rel="prefetch" href="/old-times/assets/js/46.968cec26.js"><link rel="prefetch" href="/old-times/assets/js/47.e8b4b99c.js"><link rel="prefetch" href="/old-times/assets/js/5.d068c496.js"><link rel="prefetch" href="/old-times/assets/js/6.10877874.js"><link rel="prefetch" href="/old-times/assets/js/7.6162c803.js"><link rel="prefetch" href="/old-times/assets/js/8.dd594439.js"><link rel="prefetch" href="/old-times/assets/js/9.a8d862cf.js">
+    <link rel="stylesheet" href="/old-times/assets/css/0.styles.c5586acc.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/old-times/" class="home-link router-link-active"><img src="/old-times/img/EB-logo.png" alt="Shirs's blog" class="logo"> <span class="site-name can-hide">Shirs's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/old-times/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/old-times/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e3/" class="nav-link">spring boot</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e5/" class="nav-link">java基础</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e4/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9005/" class="nav-link">设计模式</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9002/" class="nav-link">注解</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9016/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9018/" class="nav-link">debug</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9010/" class="nav-link">数据库</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="杂谈" class="dropdown-title"><a href="/old-times/Miscellany/" class="link-title">杂谈</a> <span class="title" style="display:none;">杂谈</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9028/" class="nav-link">自言自语</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><a href="/old-times/cloudnative/" class="link-title">云原生</a> <span class="title" style="display:none;">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9019/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9025/" class="nav-link">prometheus</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9026/" class="nav-link">operator</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9027/" class="nav-link">jeakins</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9015/" class="nav-link">k8s</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="go" class="dropdown-title"><a href="/old-times/go/" class="link-title">go</a> <span class="title" style="display:none;">go</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9020/" class="nav-link">go</a></li></ul></div></div><div class="nav-item"><a href="/old-times/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/old-times/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/old-times/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/old-times/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/shirongsheng/old-times" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/old-times/img/panda.jpg"> <div class="blogger-info"><h3>shirongsheng</h3> <span>全栈在路上</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/old-times/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/old-times/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e3/" class="nav-link">spring boot</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e5/" class="nav-link">java基础</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc95e4/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9005/" class="nav-link">设计模式</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9002/" class="nav-link">注解</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9016/" class="nav-link">linux</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9018/" class="nav-link">debug</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9010/" class="nav-link">数据库</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="杂谈" class="dropdown-title"><a href="/old-times/Miscellany/" class="link-title">杂谈</a> <span class="title" style="display:none;">杂谈</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9028/" class="nav-link">自言自语</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><a href="/old-times/cloudnative/" class="link-title">云原生</a> <span class="title" style="display:none;">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9019/" class="nav-link">docker</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9025/" class="nav-link">prometheus</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9026/" class="nav-link">operator</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9027/" class="nav-link">jeakins</a></li><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9015/" class="nav-link">k8s</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="go" class="dropdown-title"><a href="/old-times/go/" class="link-title">go</a> <span class="title" style="display:none;">go</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/pages/8309a5b876fc9020/" class="nav-link">go</a></li></ul></div></div><div class="nav-item"><a href="/old-times/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/old-times/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/old-times/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/old-times/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/old-times/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/shirongsheng/old-times" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>spring boot</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>java基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/old-times/pages/8309a5b876fc9005/" class="sidebar-link">设计模式概述</a></li><li><a href="/old-times/pages/8309a5b876fc9001/" aria-current="page" class="active sidebar-link">单例模式</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/old-times/pages/8309a5b876fc9003/" class="sidebar-link">工厂模式</a></li><li><a href="/old-times/pages/8309a5b876fc9004/" class="sidebar-link">构造者模式</a></li><li><a href="/old-times/pages/8309a5b876fc9006/" class="sidebar-link">代理模式</a></li><li><a href="/old-times/pages/8309a5b876fc9007/" class="sidebar-link">模板模式</a></li><li><a href="/old-times/pages/8309a5b876fc9008/" class="sidebar-link">原型模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>注解</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>debug</span> <span class="arrow right"></span></p> <!----></section></li></ul> <div class="sidebar-slot sidebar-slot-bottom"><!-- 正方形 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="3508773082"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div></aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/old-times/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/old-times/technology/#技术" data-v-0c557b5e>技术</a></li><li data-v-0c557b5e><a href="/old-times/technology/#设计模式" data-v-0c557b5e>设计模式</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="https://github.com/shirongsheng" target="_blank" title="作者" class="beLink" data-v-0c557b5e>shirongsheng</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2021-06-15</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">单例模式<!----></h1> <div class="page-slot page-slot-top"><!-- 固定100% * 90px可显示，max-height:90px未见显示-->
+     <ins class="adsbygoogle"
+          style="display:inline-block;width:100%;max-height:90px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6625304284"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="theme-vdoing-content content__default"><h3 id="什么是单例模式"><a href="#什么是单例模式" class="header-anchor">#</a> 什么是单例模式？</h3> <p>单例模式是指一个系统中只存在该类的一个实例</p> <h3 id="如何实现单例模式"><a href="#如何实现单例模式" class="header-anchor">#</a> 如何实现单例模式？</h3> <p>单例模式的必要条件有两点：</p> <p>1、由private修饰构造器，这样外部就无法通过new关键字创建该类的实例对象了</p> <p>2、提供一个由public修改的静态方法，用于返回该类的实例对象</p> <h3 id="单例模式的使用场景"><a href="#单例模式的使用场景" class="header-anchor">#</a> 单例模式的使用场景？</h3> <p>1、网站访问次数</p> <p>2、配置文件读取</p> <p>等系统中只需要一个对象存在的场景。</p> <h3 id="饿汉式"><a href="#饿汉式" class="header-anchor">#</a> 饿汉式</h3> <p>实现一个最为简单的单例模式，如下所示</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Singlton_v1 {
+
+    //构造器私有，无法通过外部创建实例
+    private Singlton_v1(){
+
+    }
+
+    private static Singlton_v1 singlton_v1 = new Singlton_v1();
+
+    public static Singlton_v1 getInstance(){
+        return singlton_v1;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>由上面可以看出，在声明该单例类时就创建了实例对象。</p> <p>当类装载的时候就会创建类实例，不管你用不用，先创建出来，然后每次调用的时候，就不需要判断了，节省了运行时间。</p> <p>由于类装载时就会创建出实例，所以不存在线程安全问题，但是会有一定的内存消耗。</p> <h3 id="懒汉式-延迟加载"><a href="#懒汉式-延迟加载" class="header-anchor">#</a> 懒汉式(延迟加载)</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Singlton_v2 {
+
+    //构造器私有，无法通过外部创建实例
+    private Singlton_v2(){
+
+    }
+
+    private static Singlton_v2 singlton_v2;
+
+    public static Singlton_v2 getInstance(){
+        if (singlton_v2 == null){
+            singlton_v2 = new Singlton_v2();
+        }
+        return singlton_v2;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>由代码可以看到，首先声明实例引用，类加载时并未创建对象实例，
+只有调用到getInstance方法时，如果该对象未创建时才会实例化对象，
+此方式为延迟加载，只有用到时才创建对象，减少了内存消耗。</p> <p>但是该方式显而易见的会存在线程安全问题，当线程A进入到判空语句后，对象还未创建之时，
+线程B也会进入到判空语句，此时就会出现问题。</p> <p>我们最先想到的就是给对象加同步锁，如下所示</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static synchronized Singlton_v2 getInstance(){
+        if (singlton_v2 == null){
+            singlton_v2 = new Singlton_v2();
+        }
+        return singlton_v2;
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>这样可以很好的接口线程安全问题，但是除了第一次单例对象的创建外，
+后面的每一次调用方法，都会有同步机制，这会造成一定的性能损耗，故此，
+这种方式也是要被舍弃的，我们可以使用双重校验模式。</p> <p>那么如何实现线程安全的懒汉式单例模式呢？</p> <h3 id="双重校验-double-check-lock"><a href="#双重校验-double-check-lock" class="header-anchor">#</a> 双重校验(double check lock)</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Singlton_v2 {
+
+    //构造器私有，无法通过外部创建实例
+    private Singlton_v2(){
+
+    }
+
+    private static Singlton_v2 singlton_v2;
+
+    public static synchronized Singlton_v2 getInstance(){
+        if (singlton_v2 == null){
+            synchronized (singlton_v2){
+                if (singlton_v2 ==null){
+                    singlton_v2 = new Singlton_v2();
+                }
+            }
+
+        }
+        return singlton_v2;
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>以上就是线程安全的懒汉式单例模式的实现方式了，也是我们常用的方式。</p> <h3 id="使用静态内部类实现单例模式"><a href="#使用静态内部类实现单例模式" class="header-anchor">#</a> 使用静态内部类实现单例模式</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Singlton_v3 {
+
+    //构造器私有，无法通过外部创建实例
+    private Singlton_v3(){
+
+    }
+
+    private static class Singlton{
+        private static Singlton_v3 singlton_v3 = new Singlton_v3();
+    }
+
+    private static Singlton_v3 singlton_v2;
+
+    public static Singlton_v3 getInstance(){
+        return Singlton.singlton_v3;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>当getInstance方法第一次被调用的时候,Singlton.singlton_v3，
+导致Singlton类得到初始化；而这个类在装载并被初始化的时候，会初始化它的静态域，
+从而创建Singlton_v3的实例，由于是静态的域，因此只会在虚拟机装载类的时候初始化一次，
+并由虚拟机来保证它的线程安全性。</p> <h4 id="静态内部类和dcl创建单例模式的区别"><a href="#静态内部类和dcl创建单例模式的区别" class="header-anchor">#</a> 静态内部类和DCL创建单例模式的区别</h4> <p>静态内部类创建单例模式无法传递参数，而DCL创建单例模式可以传递参数，
+我们可以根据不同场景来选择不同的创建方式。</p> <h3 id="使用枚举来实现单例模式"><a href="#使用枚举来实现单例模式" class="header-anchor">#</a> 使用枚举来实现单例模式</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>public enum  EnumSinglton {
+    intance;
+
+    //可以实现相关的方法
+    public void method(){
+        System.out.println(&quot;dosomething...&quot;);
+    }
+    
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>可以通过EnumSinglton.intance来调用。</p> <p>注：使用静态内部类和DCL创建单例模式时，在反射和序列化时不能保证对象的唯一性，
+所以，现在推荐使用枚举来创建单例模式。</p> <h3 id="实战"><a href="#实战" class="header-anchor">#</a> 实战</h3> <p>1、假设我们有一个config.properties的配置文件，里面配置了我们给不同客户使用的配置信息，我们程序代码中
+则需要读取该配置文件，根据配置信息的不同，执行不同的业务逻辑。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;customer&quot;:&quot;tencent&quot;,
+    &quot;systemName&quot;:&quot;LOL&quot;,
+    &quot;isPay&quot;:&quot;true&quot;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>2、此时我们可以新建一个单例类来读取该配置文件内容，代码如下所示。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import com.alibaba.fastjson.JSONObject;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+public class CustomerConfig {
+
+    private CustomerConfig(){
+        ClassLoader classLoader = CustomerConfig.class.getClassLoader();
+        String configPath = classLoader.getResource(&quot;config/config.properties&quot;).getPath();
+        File file = new File(configPath);
+        int ch = 0;
+        StringBuilder sb = new StringBuilder();
+        try(Reader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);){
+            while ((ch = reader.read()) != -1){
+                sb.append((char) ch);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        customerConfig = JSONObject.parseObject(sb.toString());
+    }
+
+
+    private volatile static CustomerConfig instance = null;
+
+    private static JSONObject customerConfig = new JSONObject();
+
+    public static CustomerConfig getInstance(){
+        if (null == instance){
+            synchronized (CustomerConfig.class){
+                if (null == instance){
+                    instance = new CustomerConfig();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public JSONObject getCustomerConfig(){
+        return customerConfig;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><p>3、编写测试类，测试读取内容</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>JSONObject customerConfig = CustomerConfig.getInstance().getCustomerConfig();
+System.out.println(customerConfig);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>输出如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{&quot;isPay&quot;:&quot;true&quot;,&quot;systemName&quot;:&quot;LOL&quot;,&quot;customer&quot;:&quot;tencent&quot;}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>其中构造器中读取配置文件的写法也可以用如下方式</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    private CustomerConfig(){
+        InputStream resourceAsStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(&quot;config/config.properties&quot;);
+        int ch = 0;
+        StringBuilder sb = new StringBuilder();
+        try(Scanner scanner = new Scanner(resourceAsStream)){
+            while(scanner.hasNextLine()){
+                sb.append(scanner.nextLine());
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+        customerConfig = JSONObject.parseObject(sb.toString());
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></div></div> <div class="page-slot page-slot-bottom"><!-- 横向自适应 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6620245489"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/shirongsheng/old-times/edit/master/docs/01.技术/04.设计模式/01.单例模式.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021/07/04, 23:49:01</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/old-times/pages/8309a5b876fc9005/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">设计模式概述</div></a> <a href="/old-times/pages/8309a5b876fc9003/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">工厂模式</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/old-times/pages/8309a5b876fc9005/" class="prev">设计模式概述</a></span> <span class="next"><a href="/old-times/pages/8309a5b876fc9003/">工厂模式</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/old-times/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/old-times/pages/8309a5b876fc9030/"><div>
+            本地虚拟机安装k8s
+            <!----></div></a> <span class="date">12-16</span></dt></dl><dl><dd>02</dd> <dt><a href="/old-times/pages/8309a5b876fc9031/"><div>
+            linux下安装go环境
+            <!----></div></a> <span class="date">12-16</span></dt></dl><dl><dd>03</dd> <dt><a href="/old-times/pages/8309a5b876fc9029/"><div>
+            工程管理
+            <!----></div></a> <span class="date">09-13</span></dt></dl> <dl><dd></dd> <dt><a href="/old-times/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:599073585@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/shirongsheng" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="#" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2021-2022
+    <span>shirongsheng | <a href="https://github.com/shirongsheng" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <div class="custom-html-window custom-html-window-rb" style="display:;"><div class="custom-wrapper"><span class="close-but">×</span> <div><!-- 固定160*160px -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;max-width:160px;max-height:160px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="8377369658"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div></div></div></div><div class="global-ui"></div></div>
+    <script src="/old-times/assets/js/app.285e83f8.js" defer></script><script src="/old-times/assets/js/2.448ed11b.js" defer></script><script src="/old-times/assets/js/18.19e554c0.js" defer></script>
+  </body>
+</html>
